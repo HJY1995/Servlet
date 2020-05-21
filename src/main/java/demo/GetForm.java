@@ -9,16 +9,16 @@ import java.io.PrintWriter;
 
 @WebServlet("/getForm")
 public class GetForm extends HttpServlet {
-    public GetForm(){
+    public GetForm() {
         super();
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
+        PrintWriter out = response.getWriter();
         String title = "使用 GET 方法读取表单数据";
         //中文转码
-        String name=new String(request.getParameter("name").getBytes("ISO-8859-1"),"UTF-8");
+        String name = new String(request.getParameter("name").getBytes("ISO-8859-1"), "UTF-8");
 
         String docType = "<!DOCTYPE html> \n";
         out.println(docType +
@@ -35,7 +35,7 @@ public class GetForm extends HttpServlet {
                 "</body></html>");
     }
 
-    public void doPost(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        doGet(request,response);
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        doGet(request, response);
     }
 }

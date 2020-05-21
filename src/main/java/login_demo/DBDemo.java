@@ -12,6 +12,6 @@ public class DBDemo extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
 
-        out.println(DBSearch.check("root","123456"));
+        out.println(DBSearch.check("root", "123456"));
     }
 }

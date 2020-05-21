@@ -1,9 +1,5 @@
 package login_demo;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 
 public class DBSearch {
@@ -50,7 +46,7 @@ public class DBSearch {
             try {
                 if (!resultSet.next()) break;
 
-                if(name.equals(resultSet.getString("name"))&&passwd.equals(resultSet.getString("passwd"))){
+                if (name.equals(resultSet.getString("name")) && passwd.equals(resultSet.getString("passwd"))) {
                     return true;
                 }
 
@@ -91,6 +87,6 @@ public class DBSearch {
     }
 
     public static void main(String[] args) {
-        System.out.println(DBSearch.check("root","123456"));
+        System.out.println(DBSearch.check("root", "123456"));
     }
 }

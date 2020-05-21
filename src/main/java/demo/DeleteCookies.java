@@ -12,10 +12,10 @@ import java.io.PrintWriter;
 public class DeleteCookies extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
-        Cookie[] cookies=request.getCookies();
+        PrintWriter out = response.getWriter();
+        Cookie[] cookies = request.getCookies();
         try {
-            if(cookies!=null) {
+            if (cookies != null) {
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().equals("name")) {
                         cookie.setMaxAge(0);
@@ -25,7 +25,7 @@ public class DeleteCookies extends HttpServlet {
                         out.println("still alive cookie:" + cookie.getName());
                     }
                 }
-            }else {
+            } else {
                 out.println("no cookies");
             }
         } catch (Exception e) {

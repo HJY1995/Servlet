@@ -15,8 +15,7 @@ import java.util.Date;
 public class SessionTrack extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
         // 如果不存在 session 会话，则创建一个 session 对象
         HttpSession session = request.getSession(true);
         // 获取 session 创建时间
@@ -25,28 +24,28 @@ public class SessionTrack extends HttpServlet {
         Date lastAccessTime = new Date(session.getLastAccessedTime());
 
         //设置日期输出的格式
-        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         String title = "Servlet Session 实例 - 菜鸟教程";
         Integer visitCount = new Integer(0);
         String visitCountKey = new String("visitCount");
         String userIDKey = new String("userID");
         String userID = new String("Runoob");
-        if(session.getAttribute(visitCountKey) == null) {
+        if (session.getAttribute(visitCountKey) == null) {
             session.setAttribute(visitCountKey, new Integer(0));
         }
 
 
         // 检查网页上是否有新的访问者
-        if (session.isNew()){
+        if (session.isNew()) {
 
             session.setAttribute(userIDKey, userID);
         } else {
-            visitCount = (Integer)session.getAttribute(visitCountKey);
+            visitCount = (Integer) session.getAttribute(visitCountKey);
             visitCount = visitCount + 1;
-            userID = (String)session.getAttribute(userIDKey);
+            userID = (String) session.getAttribute(userIDKey);
         }
-        session.setAttribute(visitCountKey,  visitCount);
+        session.setAttribute(visitCountKey, visitCount);
 
         // 设置响应内容类型
         response.setContentType("text/html;charset=UTF-8");
@@ -67,7 +66,7 @@ public class SessionTrack extends HttpServlet {
                 "  <td>" + session.getId() + "</td></tr>\n" +
                 "<tr>\n" +
                 "  <td>创建时间</td>\n" +
-                "  <td>" +  df.format(createTime) +
+                "  <td>" + df.format(createTime) +
                 "  </td></tr>\n" +
                 "<tr>\n" +
                 "  <td>最后访问时间</td>\n" +

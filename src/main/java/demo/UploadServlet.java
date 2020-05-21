@@ -22,9 +22,9 @@ public class UploadServlet extends HttpServlet {
     private static final String UPLOAD_DIRECTORY = "upload";
 
     // 上传配置
-    private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE      = 1024 * 1024 * 40; // 40MB
-    private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 50; // 50MB
+    private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3;  // 3MB
+    private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
+    private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 
     /**
      * 上传数据及保存文件
@@ -95,7 +95,7 @@ public class UploadServlet extends HttpServlet {
             request.setAttribute("message",
                     "错误信息: " + ex.getMessage());
         }
-        request.setAttribute("msg","这是自己设置的信息");
+        request.setAttribute("msg", "这是自己设置的信息");
         // 跳转到 message.jsp
         request.getServletContext().getRequestDispatcher("/message.jsp").forward(
                 request, response);

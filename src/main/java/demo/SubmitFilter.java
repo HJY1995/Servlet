@@ -1,8 +1,6 @@
 package demo;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -13,8 +11,8 @@ public class SubmitFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("初始化过滤器");
-        String initValue=filterConfig.getInitParameter("submit");
-        System.out.println("initValue = "+initValue);
+        String initValue = filterConfig.getInitParameter("submit");
+        System.out.println("initValue = " + initValue);
     }
 
     @Override
@@ -22,9 +20,9 @@ public class SubmitFilter implements Filter {
         System.out.println("过滤器开始执行，如果name=baidu，则过滤");
 
         try {
-            if ((servletRequest.getParameter("name")).equals("baidu")){
+            if ((servletRequest.getParameter("name")).equals("baidu")) {
                 servletResponse.setContentType("text/html;charset=UTF-8");
-                PrintWriter out=servletResponse.getWriter();
+                PrintWriter out = servletResponse.getWriter();
                 String title = "过滤baidu";
                 String docType = "<!DOCTYPE html> \n";
                 out.println(docType +
@@ -33,11 +31,11 @@ public class SubmitFilter implements Filter {
                         "<body bgcolor=\"#f0f0f0\">\n" +
                         "<h1 align=\"center\">" + title + "</h1>\n" +
                         "</body></html>");
-            }else {
-                filterChain.doFilter(servletRequest,servletResponse);
+            } else {
+                filterChain.doFilter(servletRequest, servletResponse);
             }
         } catch (IOException e) {
-            PrintWriter out=servletResponse.getWriter();
+            PrintWriter out = servletResponse.getWriter();
             out.println(e.getMessage());
         }
     }

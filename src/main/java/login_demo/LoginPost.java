@@ -12,13 +12,13 @@ public class LoginPost extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         response.setContentType("text/html;charset=utf-8");
-        PrintWriter out=response.getWriter();
-        String name=request.getParameter("name");
-        String passwd=request.getParameter("passwd");
-        if(DBSearch.check(name,passwd)){
+        PrintWriter out = response.getWriter();
+        String name = request.getParameter("name");
+        String passwd = request.getParameter("passwd");
+        if (DBSearch.check(name, passwd)) {
             System.out.println("success");
             out.println("success");
-        }else {
+        } else {
             System.out.println("filed");
             out.println("filed");
         }

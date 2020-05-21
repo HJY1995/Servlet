@@ -13,15 +13,15 @@ import java.util.List;
 public class TestMybatis {
 
     public void test() throws IOException {
-        String resource= "E:\\IdeaProjects\\webTest\\src\\main\\java\\resource\\sqlMapConfig.xml";
-        InputStream inputStream= Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+        String resource = "E:\\IdeaProjects\\webTest\\src\\main\\java\\resource\\sqlMapConfig.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
-        SqlSession sqlSession=sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        List<Student> studentList=sqlSession.selectList("mybatis_demo.mapper.findAll");
+        List<Student> studentList = sqlSession.selectList("mybatis_demo.mapper.findAll");
 
-        for(Student s:studentList){
+        for (Student s : studentList) {
             System.out.println(s);
         }
     }

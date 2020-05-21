@@ -29,7 +29,7 @@ public class Student {
         this.age = age;
     }
 
-    public String toString(){
-        return String.format("Student{id=%d,name=%s,age=%d}",id,name,age);
+    public String toString() {
+        return String.format("Student{id=%d,name=%s,age=%d}", id, name, age);
     }
 }

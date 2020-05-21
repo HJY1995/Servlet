@@ -14,13 +14,14 @@ import java.sql.*;
 public class DatabaseDemo extends HttpServlet {
     final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     final String DB_URL = "jdbc:mysql://192.168.186.129:3306/test";
-    final String USER="root";
-    final String PWD="123456";
+    final String USER = "root";
+    final String PWD = "123456";
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         PrintWriter out = response.getWriter();
 
-        out.println(DBSearch.check("root","123456"));
+        out.println(DBSearch.check("root", "123456"));
 
         //注册JDBC驱动
         try {
@@ -30,15 +31,15 @@ public class DatabaseDemo extends HttpServlet {
         }
 
         //建立连接
-        Connection connection= null;
+        Connection connection = null;
         try {
-            connection = DriverManager.getConnection(DB_URL,USER,PWD);
+            connection = DriverManager.getConnection(DB_URL, USER, PWD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         //创建执行SQL语句的 statement
-        Statement statement= null;
+        Statement statement = null;
         try {
             statement = connection.createStatement();
         } catch (SQLException e) {
@@ -46,7 +47,7 @@ public class DatabaseDemo extends HttpServlet {
         }
 
         //使用statement执行select
-        ResultSet resultSet= null;
+        ResultSet resultSet = null;
         try {
             resultSet = statement.executeQuery("SELECT id,name,url,point from websites");
         } catch (SQLException e) {
@@ -55,7 +56,7 @@ public class DatabaseDemo extends HttpServlet {
 
         System.out.println(resultSet);
 
-        while (true){
+        while (true) {
             try {
                 if (!resultSet.next()) break;
             } catch (SQLException e) {
@@ -68,10 +69,10 @@ public class DatabaseDemo extends HttpServlet {
 //                e.printStackTrace();
 //            }
             try {
-                out.println("id="+resultSet.getString("id"));
-                out.println("name="+resultSet.getString("name"));
-                out.println("url="+resultSet.getString("url"));
-                out.println("point="+resultSet.getString("point"));
+                out.println("id=" + resultSet.getString("id"));
+                out.println("name=" + resultSet.getString("name"));
+                out.println("url=" + resultSet.getString("url"));
+                out.println("point=" + resultSet.getString("point"));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
